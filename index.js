@@ -28,7 +28,10 @@ console.table(eligibleComputers);
 // get the distribution of tasks to send out
 let distribution = distributeTasks(eligibleComputers, tasks);
 console.log("\nTask Distribution:");
-console.table(distribution)
+console.table(distribution[0])
+
+console.log("\nTask Enqueue:");
+console.table(distribution[1])
 
 let distributed = distribution[0];
 let queued = distributed[1];
