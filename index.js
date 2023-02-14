@@ -1,10 +1,11 @@
-import { selectComputers } from "./select.js"
-import { distributeTasks } from "./distribute.js"
-import { calculateElo, calculateNascar } from "./rank.js"
+import { selectComputers } from "./select.js";
+import { distributeTasks } from "./distribute.js";
+import { calculateElo } from "./rank/elo.js";
+import { calculateNascar } from "./rank/nascar.js";
 
 // test
-import { computers } from "./data/computers.js"
-import { tasks } from "./data/tasks.js"
+import { computers } from "./data/computers.js";
+import { tasks } from "./data/tasks.js";
 
 console.log("Computers: ");
 console.table(computers);
@@ -28,10 +29,10 @@ console.table(eligibleComputers);
 // get the distribution of tasks to send out
 let distribution = distributeTasks(eligibleComputers, tasks);
 console.log("\nTask Distribution:");
-console.table(distribution[0])
+console.table(distribution[0]);
 
 console.log("\nTask Enqueue:");
-console.table(distribution[1])
+console.table(distribution[1]);
 
 let distributed = distribution[0];
 let queued = distributed[1];
@@ -43,14 +44,14 @@ let results = [
   { taskId: 3, executionTime: 0.0689 },
   { taskId: 4, executionTime: 0.0123 },
   { taskId: 5, executionTime: 0.0456 },
-  { taskId: 6, executionTime: 0.0689 }
+  { taskId: 6, executionTime: 0.0689 },
 ];
 
 console.log("\nTask Results: ");
 console.table(results);
 
-let elo = calculateElo(computers, tasks, distributed, results)
-let nascar = calculateNascar(elo, tasks, distributed, results)
+let elo = calculateElo(computers, tasks, distributed, results);
+let nascar = calculateNascar(elo, tasks, distributed, results);
 
 console.log("\nRankings: ");
 console.table(nascar);
